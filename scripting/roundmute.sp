@@ -35,7 +35,10 @@ public void OnClientPutInServer(int client)
 	if(b_IsNew[client])
 	{
 		BaseComm_SetClientMute(client, true);
-		PrintToChat(client, "%s You have been muted for the first round.", TAG_MESSAGE);
+		if(RoundCount >= 1)
+		{
+			PrintToChat(client, "%s You have been muted for the first round.", TAG_MESSAGE);
+		}
 	}
 }
 
