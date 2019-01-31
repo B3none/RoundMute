@@ -1,25 +1,22 @@
-/*
-* Code by B3none -> http://steamcommunity.com/profiles/76561198028510846
-*/
-
 #include <sourcemod>
 #include <sdktools>
 #include <basecomm>
+
 #pragma semicolon 1
 #pragma newdecls required
 
-#define TAG_MESSAGE "[\x04RoundMute\x01]"
+#define MESSAGE_PREFIX "[\x04RoundMute\x01]"
 
 bool b_IsNew[MAXPLAYERS+1];
 int RoundCount = 0;
 
 public Plugin myinfo =
 {
-	name = 			"Round Muting",
-	author = 		"B3none",
-	description = 	"The player is muted for the initial round of connection.",
-	version = 		"0.1",
-	url = 			""
+	name = "Round Muting",
+	author = "B3none",
+	description = "The player is muted for the initial round of connection.",
+	version = "1.0.0",
+	url = "https://github.com/b3none"
 };
 
 
@@ -37,7 +34,7 @@ public void OnClientPutInServer(int client)
 		BaseComm_SetClientMute(client, true);
 		if(RoundCount >= 1)
 		{
-			PrintToChat(client, "%s You have been muted for the first round.", TAG_MESSAGE);
+			PrintToChat(client, "%s You have been muted for the first round.", MESSAGE_PREFIX);
 		}
 	}
 }
@@ -50,7 +47,7 @@ public Action OnRoundEnd(Handle event, const char[] name, bool dontBroadcast)
 		{
 			b_IsNew[i] = false;
 			BaseComm_SetClientMute(i, false);
-			PrintToChat(i, "%s You have been unmuted, welcome to the server!", TAG_MESSAGE);
+			PrintToChat(i, "%s You have been unmuted, welcome to the server!", MESSAGE_PREFIX);
 		}
 		
 		else
