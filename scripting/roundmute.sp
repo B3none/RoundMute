@@ -12,7 +12,7 @@ int RoundCount = 0;
 
 public Plugin myinfo =
 {
-	name = "Round Muting",
+	name = "Initial Round Mute",
 	author = "B3none",
 	description = "The player is muted for the initial round of connection.",
 	version = "1.0.0",
